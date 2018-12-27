@@ -5,20 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mycompany.hrkapp1.entity.Pets;
-import com.mycompany.hrkapp1.repository.PetsRepository;
+import com.mycompany.hrkapp1.entity.SakilaCustomers;
+import com.mycompany.hrkapp1.repository.SakilaCustomersRepository;
 
 import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/api")
-public class PetsController {
+public class SakilaCustomersController {
 	
 	@Autowired
-	private PetsRepository repository;
+	private SakilaCustomersRepository repository;
 	
-	@RequestMapping(value = "/pets", method = RequestMethod.GET)
-	public Flux<Pets> getAllPets() {
+	@RequestMapping(value = "/customers", method = RequestMethod.GET)
+	public Flux<SakilaCustomers> findAll() {
 	  return repository.findAll();
 	}
 
