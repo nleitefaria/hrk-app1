@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/api")
-public class VideoMoviesCustomersController {
+public class VideoMoviesController {
 	
 	@Autowired
 	private VideoMoviesRepository repository;
