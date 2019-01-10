@@ -17,9 +17,8 @@ public class VideoMovieDetailsController
 	private VideoMovieDetailsRepository repository;
 	
 	@RequestMapping(value = "/video/movies-details", method = RequestMethod.GET)
-	public Flux<VideoMovieDetails> findAll() {
+	public Flux<VideoMovieDetails> findAll() 
+	{
 	  return repository.findAll();
 	}
-	
-
 }

@@ -12,14 +12,14 @@ import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/api")
-public class VideoReviewsController {
-	
+public class VideoReviewsController 
+{
 	@Autowired
 	private VideoReviewsRepository repository;
 	
 	@RequestMapping(value = "/video/reviews", method = RequestMethod.GET)
-	public Flux<VideoReviews> findAll() {
+	public Flux<VideoReviews> findAll() 
+	{
 	  return repository.findAll();
 	}
-
 }
