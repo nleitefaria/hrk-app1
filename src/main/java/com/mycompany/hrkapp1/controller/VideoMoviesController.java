@@ -49,7 +49,7 @@ public class VideoMoviesController
     }
     ) 
 	@GetMapping("/video/movie/{id}")
-    public Mono<ResponseEntity<VideoMovies>> getTweetById(@PathVariable(value = "id") String id) 
+    public Mono<ResponseEntity<VideoMovies>> findOne(@PathVariable(value = "id") String id) 
 	{
         return repository.findById(new ObjectId(id))
                 .map(videoMovie -> ResponseEntity.ok(videoMovie))
