@@ -1,6 +1,7 @@
 package com.mycompany.hrkapp1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,5 +30,11 @@ public class VideoMoviesController
     public ResponseEntity<Mono<VideoMovies>> findOne(@PathVariable(value = "id") String id) 
 	{
 		return new ResponseEntity<Mono<VideoMovies>>(service.findById(id), HttpStatus.OK);
+    }
+	
+	@GetMapping("/video/movies/page/{pageNum}")
+    public ResponseEntity<Page<VideoMovies>> findAllPaged(@PathVariable(value = "pageNum") Integer pageNum) 
+	{
+		return new ResponseEntity<Page<VideoMovies>>(service.listAllPaged(pageNum), HttpStatus.OK);
     }
 }
