@@ -26,15 +26,17 @@ public class VideoMoviesController
 	  return new ResponseEntity<Flux<VideoMovies>>(service.listAll(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/video/movie/{id}")
+	@GetMapping(value = "/video/movies/page/{pageNum}")
+    public ResponseEntity<Mono<Page<VideoMovies>>> findAllPaged(@PathVariable(value = "pageNum") Integer pageNum) 
+	{
+		return new ResponseEntity<Mono<Page<VideoMovies>>>(service.listAllPaged(pageNum), HttpStatus.OK);
+    }
+	
+	@GetMapping(value = "/video/movie/{id}")
     public ResponseEntity<Mono<VideoMovies>> findOne(@PathVariable(value = "id") String id) 
 	{
 		return new ResponseEntity<Mono<VideoMovies>>(service.findById(id), HttpStatus.OK);
     }
 	
-	@GetMapping("/video/movies/page/{pageNum}")
-    public ResponseEntity<Page<VideoMovies>> findAllPaged(@PathVariable(value = "pageNum") Integer pageNum) 
-	{
-		return new ResponseEntity<Page<VideoMovies>>(service.listAllPaged(pageNum), HttpStatus.OK);
-    }
+	
 }

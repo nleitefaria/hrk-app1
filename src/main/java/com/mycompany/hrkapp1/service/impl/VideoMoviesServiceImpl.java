@@ -14,8 +14,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Service;
 
-import com.mongodb.MongoClient;
-import com.mongodb.WriteConcern;
 import com.mycompany.hrkapp1.entity.VideoMovies;
 import com.mycompany.hrkapp1.repository.VideoMoviesRepository;
 import com.mycompany.hrkapp1.service.VideoMoviesService;
@@ -44,12 +42,20 @@ public class VideoMoviesServiceImpl implements VideoMoviesService
         return repository.findById(new ObjectId(id));
     }
 	
-	public Page<VideoMovies> listAllPaged(int pageNum) 
-    {
+	public Mono<Page<VideoMovies>> listAllPaged(int pageNum)
+	{
+		return Mono.create(callback -> {
+		    try { callback.success(this.getAllPaged(pageNum)); }
+		    catch (Exception e) { callback.error(e); }
+		});	
+	}
+	
+	private Page<VideoMovies> getAllPaged(int pageNum)
+	{
 		Pageable pageable = new PageRequest(pageNum, 10);
 		Query videoMoviesDynamicQuery = new Query().with(pageable);		
 		List<VideoMovies> filteredVideoMovies = mongoTemplate.find(videoMoviesDynamicQuery, VideoMovies.class, "video_movies");
-		Page<VideoMovies> videoMoviesPage = PageableExecutionUtils.getPage(filteredVideoMovies, pageable, () -> mongoTemplate.count(videoMoviesDynamicQuery, VideoMovies.class));
-		return videoMoviesPage;
-    }
+		Page<VideoMovies> videoMoviesPage = PageableExecutionUtils.getPage(filteredVideoMovies, pageable, () -> mongoTemplate.count(videoMoviesDynamicQuery, VideoMovies.class));		
+		return videoMoviesPage;		
+	}
 }
