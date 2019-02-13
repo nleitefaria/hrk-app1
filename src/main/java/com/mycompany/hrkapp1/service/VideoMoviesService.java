@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 
 public interface VideoMoviesService 
 {
-	Flux<VideoMovies> listAll();
+	Flux<VideoMovies> findAll();
 	Mono<VideoMovies> findById(String id);
 	//Page<VideoMovies> listAllPaged(int pageNum);
 	Mono<Page<VideoMovies>> listAllPaged(int pageNum);

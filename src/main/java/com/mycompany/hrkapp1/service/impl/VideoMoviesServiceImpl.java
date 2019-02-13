@@ -32,7 +32,7 @@ public class VideoMoviesServiceImpl implements VideoMoviesService
 	@Autowired
     private VideoMoviesRepository repository;
 	
-	public Flux<VideoMovies> listAll() 
+	public Flux<VideoMovies> findAll() 
     {
         return repository.findAll();
     }

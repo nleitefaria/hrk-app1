@@ -18,12 +18,12 @@ import reactor.core.publisher.Mono;
 public class VideoMoviesController 
 {
 	@Autowired
-	private VideoMoviesService service;
+	VideoMoviesService service;
 	
 	@GetMapping(value = "/video/movies")
 	public ResponseEntity<Flux<VideoMovies>> findAll() 
 	{  
-	  return new ResponseEntity<Flux<VideoMovies>>(service.listAll(), HttpStatus.OK);
+	  return new ResponseEntity<Flux<VideoMovies>>(service.findAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/video/movies/page/{pageNum}")
