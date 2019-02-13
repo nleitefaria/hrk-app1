@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 
 public interface VideoMoviesService 
 {
-	Flux<VideoMovies> listAll();
+	Flux<VideoMovies> findAll();
 	Mono<VideoMovies> findById(String id);
 
 }

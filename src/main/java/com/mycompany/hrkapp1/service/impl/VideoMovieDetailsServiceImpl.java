@@ -6,28 +6,29 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mycompany.hrkapp1.entity.VideoMovies;
-import com.mycompany.hrkapp1.repository.VideoMoviesRepository;
-import com.mycompany.hrkapp1.service.VideoMoviesService;
+import com.mycompany.hrkapp1.entity.VideoMovieDetails;
+import com.mycompany.hrkapp1.repository.VideoMovieDetailsRepository;
+import com.mycompany.hrkapp1.service.VideoMovieDetailsService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class VideoMoviesServiceImpl implements VideoMoviesService
-{
+public class VideoMovieDetailsServiceImpl implements VideoMovieDetailsService
+{	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-    private VideoMoviesRepository repository;
+    VideoMovieDetailsRepository repository;
 	
-	public Flux<VideoMovies> findAll() 
+	public Flux<VideoMovieDetails> findAll() 
     {
         return repository.findAll();
     }
 	
-	public Mono<VideoMovies> findById(String id)
+	public Mono<VideoMovieDetails> findById(String id)
     {
         return repository.findById(new ObjectId(id));
     }
+
 }
