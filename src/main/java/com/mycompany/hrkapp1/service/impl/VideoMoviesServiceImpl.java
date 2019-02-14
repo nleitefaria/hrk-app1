@@ -34,6 +34,7 @@ public class VideoMoviesServiceImpl implements VideoMoviesService
 	
 	public Flux<VideoMovies> findAll() 
     {
+		logger.info("@findAll");
         return repository.findAll();
     }
 	
