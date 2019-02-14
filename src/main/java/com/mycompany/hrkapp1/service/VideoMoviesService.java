@@ -11,6 +11,5 @@ public interface VideoMoviesService
 {
 	Flux<VideoMovies> findAll();
 	Mono<VideoMovies> findById(String id);
-	//Page<VideoMovies> listAllPaged(int pageNum);
 	Mono<Page<VideoMovies>> listAllPaged(int pageNum);
 }
