@@ -40,6 +40,7 @@ public class VideoMoviesServiceImpl implements VideoMoviesService
 	
 	public Mono<VideoMovies> findById(String id)
     {
+		logger.info("@findById");
         return repository.findById(new ObjectId(id));
     }
 	

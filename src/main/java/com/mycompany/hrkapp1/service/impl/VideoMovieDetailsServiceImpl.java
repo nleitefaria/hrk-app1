@@ -23,11 +23,13 @@ public class VideoMovieDetailsServiceImpl implements VideoMovieDetailsService
 	
 	public Flux<VideoMovieDetails> findAll() 
     {
+		logger.info("@findAll");
         return repository.findAll();
     }
 	
 	public Mono<VideoMovieDetails> findById(String id)
     {
+		logger.info("@findById");
         return repository.findById(new ObjectId(id));
     }
 
