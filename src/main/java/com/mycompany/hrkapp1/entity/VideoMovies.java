@@ -11,12 +11,14 @@ public class VideoMovies {
 	public ObjectId _id;
 	public String title;
 	public Integer year;
+	public String imdb;
+	public String type;
 
 	public VideoMovies() {
 	}
 
-	public ObjectId get_id() {
-		return _id;
+	public String get_id() {
+		return this._id.toHexString();
 	}
 
 	public void set_id(ObjectId _id) {
@@ -38,8 +40,20 @@ public class VideoMovies {
 	public void setYear(Integer year) {
 		this.year = year;
 	}
-	
-	
 
-	
+	public String getImdb() {
+		return imdb;
+	}
+
+	public void setImdb(String imdb) {
+		this.imdb = imdb;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 }
